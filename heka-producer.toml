@@ -1,0 +1,12 @@
+[hekad]
+maxprocs = 4
+
+[TcpInput]
+address = ":5565"
+
+[KafkaOutput]
+message_matcher = "TRUE"
+encoder = "ProtobufEncoder"
+addrs = ["172.17.42.1:9092"]
+topic = "heka-test"
+partitioner = "Random"
