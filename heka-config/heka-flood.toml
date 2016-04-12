@@ -1,0 +1,7 @@
+[default]
+ip_address          = "127.0.0.1:5565"
+sender              = "tcp"
+pprof_file          = ""
+encoder             = "protobuf"
+num_messages        = 100
+variable_size_messages = false

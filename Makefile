@@ -11,7 +11,11 @@ build-heka: download-heka Dockerfile
 
 .PHONY: heka-producer
 heka-producer:
-	docker run -it --rm --name="$@" -v $(PWD)/$@.toml:/config-dir/$@.toml elemoine/heka -config=/config-dir/$@.toml
+	docker run -it --rm --name="$@" -v $(PWD)/heka-config/:/heka-config/ elemoine/heka -config=/heka-config/$@.toml
+
+.PHONY: heka-flood
+heka-flood:
+	docker exec -it heka-producer heka-flood -config=/heka-config/$@.toml -test="default"
 
 .PHONY: heka-producer-stats
 heka-producer-stats:
